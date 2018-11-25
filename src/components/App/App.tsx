@@ -3,9 +3,7 @@ import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand } from 'reactstrap';
 
 import './App.scss';
-import NavLink from 'reactstrap/lib/NavLink';
 import Brainstormer from '../Brainstormer';
-import { Home } from '../Home';
 
 class App extends React.Component {
     render() {
@@ -13,22 +11,21 @@ class App extends React.Component {
             <>
                 <BrowserRouter>
                     <>
-                        <Navbar dark>
-                            <NavbarBrand >
-                                <NavLink tag={Link} to="/">
-                                    Brainstormer
-                                </NavLink>
+                        <Navbar color="dark" dark>
+                            <NavbarBrand tag={Link} to="/">
+                                Brainstormer
                             </NavbarBrand>
-                            <Nav>
-                                <NavLink tag={Link} to="/main">
-                                    Start
-                                </NavLink>
-                            </Nav>
+                            {/* <Nav>
+                                <NavItem>
+                                    <NavLink tag={Link} to="/main">
+                                        Start
+                                    </NavLink>
+                                </NavItem>
+                            </Nav> */}
                         </Navbar>
                         <main>
                             <Switch>
-                                <Route path="/main" component={Brainstormer} />
-                                <Route component={Home} />
+                                <Route component={Brainstormer} />
                             </Switch>
                         </main>
                     </>

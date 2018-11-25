@@ -1,3 +1,3 @@
-import Brainstormer from "./Brainstormer";
+import Brainstormer from "../Brainstormer";
 
 export default Brainstormer;
