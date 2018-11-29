@@ -11,7 +11,7 @@ export type IEdge = {
     type: string;
 };
 export interface INode {
-    id: string;
+    id: any;
     title: string;
     type: string | null;
     subtype?: string;
@@ -87,7 +87,7 @@ const sample: IGraph = {
         },
         {
             id: 'a1',
-            title: 'Node A (1)',
+            title: 'Idea 1',
             type: SPECIAL_TYPE,
             x: 258.3976135253906,
             y: 331.9783248901367,
@@ -95,7 +95,7 @@ const sample: IGraph = {
         {
             id: 'a2',
             subtype: SPECIAL_CHILD_SUBTYPE,
-            title: 'Node B (2)',
+            title: 'Idea 2',
             type: EMPTY_TYPE,
             x: 593.9393920898438,
             y: 260.6060791015625,

@@ -7,12 +7,14 @@ function ResultsSection(props: ResultsSectionProps) {
     const { state, id, header } = props;
 
     const [selected, selectSection] = state;
+
+    const isSelected = selected === id;
     return (
-        <Card>
+        <Card className={isSelected ? 'selected' : ''}>
             <CardHeader onClick={() => selectSection(id)} style={{ cursor: 'pointer' }}>
                 {header}
             </CardHeader>
-            <Collapse isOpen={selected === id}>
+            <Collapse isOpen={isSelected}>
                 <CardBody>
                     Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
                     Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,

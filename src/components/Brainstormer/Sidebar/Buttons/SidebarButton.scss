@@ -1,5 +1,11 @@
 
 .SidebarButton{
-    background-color: lightgray;
-    display: flex;
+    display:grid;
+    grid-template-columns: 180px 10px;
+}
+
+.add-node{
+    &:hover{
+        color: rgb(255,220,53);
+    }
 }

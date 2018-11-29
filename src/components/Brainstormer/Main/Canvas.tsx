@@ -139,7 +139,7 @@ export default class Canvas extends React.Component {
         const NodeSubtypes = GraphConfig.NodeSubtypes;
         const EdgeTypes = GraphConfig.EdgeTypes;
         return (
-            <div className="Canvas">
+            <>
                 <Graph />
                 {/* <GraphView
                     ref="GraphView"
@@ -159,7 +159,7 @@ export default class Canvas extends React.Component {
                     onDeleteEdge={this.onDeleteEdge}
                     edgeTypes={EdgeTypes}
                 /> */}
-            </div>
+            </>
         );
     }
 }
