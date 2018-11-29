@@ -8,22 +8,16 @@ import classNames from 'classnames';
  *
  */
 export default function Icon(props: IconProps) {
-    const { name, className, style: initialStyle, ...rest } = props;
+    const { name, className, style: initialStyle, size = null, ...rest } = props;
 
     const style = initialStyle || {};
 
     if (rest.onClick) {
         style.cursor = 'pointer';
     }
+    const trueClassName = classNames(className, `fa fa-${props.name}`, size !== null ? `fa-${size}x` : '');
 
-    return (
-        <i
-            className={classNames(`fa fa-${props.name}`, className)}
-            aria-hidden="true"
-            style={style}
-            {...rest}
-        />
-    );
+    return <i className={trueClassName} aria-hidden="true" style={style} {...rest} />;
 }
 
 export interface IconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -31,4 +25,5 @@ export interface IconProps extends React.DetailedHTMLProps<React.HTMLAttributes<
      * The name of the icon. This is the part after `fa fa-`
      */
     name: string;
+    size?: number;
 }

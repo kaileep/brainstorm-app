@@ -37,8 +37,7 @@ import GraphConfig, {
     SPECIAL_TYPE,
     SKINNY_TYPE,
 } from './graph-config'; // Configures node/edge types
-
-
+import { Sidebar } from '../Sidebar';
 
 function generateSample(totalNodes: number) {
     const generatedSample: IGraph = {
@@ -138,23 +137,33 @@ class Graph extends React.Component<IGraphProps, IGraphState> {
     };
 
     addStartNode = () => {
+        const input = prompt('Name this node:') || 'New input';
+        this.addNode(input);
+    };
+    addRandomNode = () => {
+        this.addNode('Auto-generated node');
+    };
+
+    addNode = (title: string) => {
         const graph = this.state.graph;
         // using a new array like this creates a new memory reference
         // this will force a re-render
-        graph.nodes = [
-            {
-                id: Date.now(),
-                title: 'Node A',
-                type: SPECIAL_TYPE,
-                x: 0,
-                y: 0,
-            },
-            ...this.state.graph.nodes,
-        ];
+
+        const newNode: INode = {
+            id: Date.now(),
+            title,
+            type: SPECIAL_TYPE,
+            x: 50,
+            y: 50,
+        };
+
+        graph.nodes = [newNode, ...this.state.graph.nodes];
         this.setState({
             graph,
+            selected: newNode,
         });
     };
+
     deleteStartNode = () => {
         const graph = this.state.graph;
         graph.nodes.splice(0, 1);
@@ -333,40 +342,41 @@ class Graph extends React.Component<IGraphProps, IGraphState> {
         const { NodeTypes, NodeSubtypes, EdgeTypes } = GraphConfig;
 
         return (
-            <div id="graph">
-                <div className="graph-header">
-                    <button onClick={this.addStartNode}>Add Node</button>
-                    <button onClick={this.deleteStartNode}>Delete Node</button>
-                    <input
-                        className="total-nodes"
-                        type="number"
-                        onBlur={this.handleChange}
-                        placeholder={this.state.totalNodes.toString()}
+            <>
+                <Sidebar onCustomIdeaClick={this.addStartNode} onAutoClick={this.addRandomNode} />
+                <section id="graph">
+                    {/* <div className="graph-header">
+                   <input
+                       className="total-nodes"
+                       type="number"
+                       onBlur={this.handleChange}
+                       placeholder={this.state.totalNodes.toString()}
+                   />
+               </div> */}
+                    <GraphView
+                        ref={this.GraphView}
+                        nodeKey={NODE_KEY}
+                        nodes={nodes}
+                        edges={edges}
+                        selected={selected}
+                        nodeTypes={NodeTypes}
+                        nodeSubtypes={NodeSubtypes}
+                        edgeTypes={EdgeTypes}
+                        onSelectNode={this.onSelectNode}
+                        onCreateNode={this.onCreateNode}
+                        onUpdateNode={this.onUpdateNode}
+                        onDeleteNode={this.onDeleteNode}
+                        onSelectEdge={this.onSelectEdge}
+                        onCreateEdge={this.onCreateEdge}
+                        onSwapEdge={this.onSwapEdge}
+                        onDeleteEdge={this.onDeleteEdge}
+                        onUndo={this.onUndo}
+                        onCopySelected={this.onCopySelected}
+                        onPasteSelected={this.onPasteSelected}
+                        layoutEngineType={this.state.layoutEngineType}
                     />
-                </div>
-                <GraphView
-                    ref={this.GraphView}
-                    nodeKey={NODE_KEY}
-                    nodes={nodes}
-                    edges={edges}
-                    selected={selected}
-                    nodeTypes={NodeTypes}
-                    nodeSubtypes={NodeSubtypes}
-                    edgeTypes={EdgeTypes}
-                    onSelectNode={this.onSelectNode}
-                    onCreateNode={this.onCreateNode}
-                    onUpdateNode={this.onUpdateNode}
-                    onDeleteNode={this.onDeleteNode}
-                    onSelectEdge={this.onSelectEdge}
-                    onCreateEdge={this.onCreateEdge}
-                    onSwapEdge={this.onSwapEdge}
-                    onDeleteEdge={this.onDeleteEdge}
-                    onUndo={this.onUndo}
-                    onCopySelected={this.onCopySelected}
-                    onPasteSelected={this.onPasteSelected}
-                    layoutEngineType={this.state.layoutEngineType}
-                />
-            </div>
+                </section>
+            </>
         );
     }
 }

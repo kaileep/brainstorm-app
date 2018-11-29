@@ -7,18 +7,18 @@ export default function Sidebar(props: SidebarProps) {
     return (
         <section className="side-bar">
             <ListGroup>
-                <SidebarButton onIconClick={() => alert('Should add custom idea')}>
+                <SidebarButton onIconClick={props.onCustomIdeaClick}>
                     Add Custom idea
                 </SidebarButton>
-                <SidebarButton onIconClick={() => alert('Should add auto-generated idea')}>
+                <SidebarButton onIconClick={props.onAutoClick}>
                     Add Auto-generated idea
-                </SidebarButton>
-                <SidebarButton onIconClick={() => alert('Should add a connection')}>
-                    Add Connection
                 </SidebarButton>
             </ListGroup>
         </section>
     );
 }
 
-export interface SidebarProps {}
+export interface SidebarProps {
+    onCustomIdeaClick():void;
+    onAutoClick():void
+}
