@@ -2,9 +2,10 @@ import * as React from 'react';
 import './ResultsSidebar.scss';
 import { Collapse, Card, CardHeader } from 'reactstrap';
 import CardBody from 'reactstrap/lib/CardBody';
+import { INode } from '../Main';
 
 function ResultsSection(props: ResultsSectionProps) {
-    const { state, id, header } = props;
+    const { state, id, header, results} = props;
 
     const [selected, selectSection] = state;
 
@@ -16,8 +17,7 @@ function ResultsSection(props: ResultsSectionProps) {
             </CardHeader>
             <Collapse isOpen={isSelected}>
                 <CardBody>
-                    Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
-                    Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
+                    {results}
                 </CardBody>
             </Collapse>
         </Card>
@@ -31,12 +31,20 @@ interface ResultsSectionProps {
     state: [number, React.Dispatch<React.SetStateAction<number>>];
     id: number;
 }
-export default function ResultsSidebar() {
+interface ResultsSidebarProps{
+    searchResults: string | null;
+}
+export default function ResultsSidebar({searchResults }:ResultsSidebarProps) {
+
+
     const state = React.useState(0);
+let results =searchResults || `
+Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
+Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,`;
 
     return (
         <section className="side-bar ResultsSection">
-            <ResultsSection id={0} header="Web results" state={state} />
+            <ResultsSection id={0} header="Web results" state={state} results={results} />
             <ResultsSection id={1} header="Image results" state={state} />
             <ResultsSection id={2} header="Item Three" state={state} />
             <ResultsSection id={3} header="Item Four" state={state} />

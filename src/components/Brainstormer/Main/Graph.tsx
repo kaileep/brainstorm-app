@@ -22,7 +22,8 @@
 import * as React from 'react';
 
 import { GraphView } from 'react-digraph';
-import sample, { IGraph, INode, IEdge } from './defaultGraphState';
+import sample from './defaultGraphState';
+import  { IGraph, INode, IEdge } from './';
 
 type LayoutEngineType = any;
 import GraphConfig, {
@@ -78,7 +79,9 @@ function generateSample(totalNodes: number) {
     return generatedSample;
 }
 
-type IGraphProps = {};
+type IGraphProps = {
+    onSelected(selected: INode | null): any;
+};
 
 type IGraphState = {
     graph: any;
@@ -137,7 +140,8 @@ class Graph extends React.Component<IGraphProps, IGraphState> {
     };
 
     addStartNode = () => {
-        const input = prompt('Name this node:') || 'New input';
+        // @ts-ignore
+        const input = (window as any).prompt('Name this node:') || 'New input';
         this.addNode(input);
     };
     addRandomNode = () => {
@@ -202,6 +206,7 @@ class Graph extends React.Component<IGraphProps, IGraphState> {
     onSelectNode = (viewNode: INode | null) => {
         // Deselect events will send Null viewNode
         this.setState({ selected: viewNode });
+        this.props.onSelected(viewNode);
     };
 
     // Edge 'mouseUp' handler

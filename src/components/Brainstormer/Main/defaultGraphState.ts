@@ -1,23 +1,7 @@
 import { SPECIAL_EDGE_TYPE, EMPTY_EDGE_TYPE, SPECIAL_TYPE, SPECIAL_CHILD_SUBTYPE, EMPTY_TYPE, SKINNY_TYPE, POLY_TYPE } from "./graph-config";
+import { IGraph } from ".";
 
-export type IGraph = {
-    nodes: INode[];
-    edges: IEdge[];
-};
-export type IEdge = {
-    handleText?: string;
-    source: string;
-    target: string;
-    type: string;
-};
-export interface INode {
-    id: any;
-    title: string;
-    type: string | null;
-    subtype?: string;
-    x?: number;
-    y?: number;
-}
+
 
 // NOTE: Edges must have 'source' & 'target' attributes
 // In a more realistic use case, the graph would probably originate
