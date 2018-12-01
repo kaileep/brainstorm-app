@@ -5,6 +5,12 @@
 
 .card.selected{
     .card-header{
-        background-color: rgb(92,218,46);
+        background-color: rgb(255, 127, 23);
 }
+    height: 76%;
+    display: flex;
+}
+
+.card-header{
+    background-color: #1e90ff46;
 }
