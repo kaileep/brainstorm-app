@@ -14,8 +14,8 @@ export function ResultsSectionBody(props: ResultsSectionBodyProps) {
     }
     return (
         <ListGroup className={'results-section-body ' + props.className}>
-            {_.map(props.results.items, (item, i) => (
-                <ResultsSectionBodyItem key={i} item={item} isImage={props.isImage} />
+            {_.map(props.results.items, (item) => (
+                <ResultsSectionBodyItem key={item.link} item={item} isImage={props.isImage} />
             ))}
         </ListGroup>
     );

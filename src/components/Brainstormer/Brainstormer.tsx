@@ -107,6 +107,8 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
         graph.nodes[i] = viewNode;
         this.setState({ graph });
+
+        this.handleGoogleSearch(viewNode);
     };
 
     onSelectNode = (viewNode: INode | null) => {
@@ -139,6 +141,7 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
         graph.nodes = [...graph.nodes, viewNode];
         this.setState({ graph });
+        this.handleGoogleSearch(viewNode);
     };
 
     // Deletes a node from the graph
@@ -207,9 +210,8 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
     //#endregion
 
-
-    public componentDidMount(){
-        this.handleGoogleSearch(this.state.graph.nodes[0])
+    public componentDidMount() {
+        this.handleGoogleSearch(this.state.graph.nodes[0]);
     }
 
     private handleGoogleSearch(viewNode: INode | null) {
