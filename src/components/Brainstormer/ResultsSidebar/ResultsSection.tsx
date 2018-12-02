@@ -1,35 +1,20 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Collapse, Card, CardHeader, CardBody, ListGroup, ListGroupItem } from 'reactstrap';
+import { Collapse, Card, CardHeader, CardBody } from 'reactstrap';
 
 import { SearchResults } from '../GoogleFetcher';
+import { ResultsSectionBody } from './ResultsSectionBody';
 
-function ResultsSectionBody(props: ResultsSectionBodyProps) {
-    if (props.results == null) {
-        return null;
-    }
+const loremIpsumDefault = `
+Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
+Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,`;
 
-    return (
-        <ListGroup className="results">
-            {_.map(props.results.items, (item, i) => (
-                <ListGroupItem key={i} className="item">
-                    <h6 className="title">{item.title}</h6>
-                    <p className="snippet">{item.snippet}</p>
-                    <a href={item.link} target="_blank" rel="noopener noreferrer">
-                        View
-                    </a>
-                </ListGroupItem>
-            ))}
-        </ListGroup>
-    );
-}
-
-interface ResultsSectionBodyProps {
-    results: SearchResults | null;
-}
-
+/**
+ * Represents a grouping of search results
+ * @param props
+ */
 export function ResultsSection(props: ResultsSectionProps) {
-    const { state, id, header, results = null } = props;
+    const { state, id, header, results = loremIpsumDefault } = props;
     const [selected, selectSection] = state;
     const isSelected = selected === id;
 
@@ -41,16 +26,17 @@ export function ResultsSection(props: ResultsSectionProps) {
         }
     };
 
+    const className = 'results-section ' + (isSelected ? 'selected' : '');
     return (
-        <Card className={isSelected ? 'selected' : ''}>
+        <Card className={className}>
             <CardHeader onClick={handleClick} style={{ cursor: 'pointer' }}>
                 {header}
             </CardHeader>
-            <Collapse isOpen={isSelected}>
+            <Collapse className="" isOpen={isSelected}>
                 {typeof results === 'string' ? (
                     <CardBody>{results}</CardBody>
                 ) : (
-                    <ResultsSectionBody results={results} />
+                    <ResultsSectionBody isImage={props.isImage} results={results} />
                 )}
             </Collapse>
         </Card>
@@ -60,6 +46,7 @@ export function ResultsSection(props: ResultsSectionProps) {
 export interface ResultsSectionProps {
     header: string;
     results?: SearchResults | string | null;
+    isImage?: boolean;
     state: [number, React.Dispatch<React.SetStateAction<number>>];
     id: number;
 }

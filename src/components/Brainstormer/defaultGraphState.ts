@@ -1,6 +1,10 @@
 import { SPECIAL_EDGE_TYPE, EMPTY_EDGE_TYPE, SPECIAL_TYPE, SPECIAL_CHILD_SUBTYPE, EMPTY_TYPE, SKINNY_TYPE, POLY_TYPE } from "./graph-config";
-import { IGraph } from ".";
+import { INode, IEdge } from "react-digraph";
 
+export type IGraph = {
+    nodes: INode[];
+    edges: IEdge[];
+};
 
 
 // NOTE: Edges must have 'source' & 'target' attributes
@@ -9,55 +13,46 @@ import { IGraph } from ".";
 const sample: IGraph = {
     edges: [
         {
-            handleText: '5',
             source: 'start1',
             target: 'a1',
             type: SPECIAL_EDGE_TYPE,
         },
         {
-            handleText: '5',
             source: 'a1',
             target: 'a2',
             type: SPECIAL_EDGE_TYPE,
         },
         {
-            handleText: '54',
             source: 'a2',
             target: 'a4',
             type: EMPTY_EDGE_TYPE,
         },
         {
-            handleText: '54',
             source: 'a1',
             target: 'a3',
             type: EMPTY_EDGE_TYPE,
         },
         {
-            handleText: '54',
             source: 'a3',
             target: 'a4',
             type: EMPTY_EDGE_TYPE,
         },
         {
-            handleText: '54',
             source: 'a1',
             target: 'a5',
             type: EMPTY_EDGE_TYPE,
         },
         {
-            handleText: '54',
             source: 'a4',
             target: 'a1',
             type: EMPTY_EDGE_TYPE,
         },
         {
-            handleText: '54',
             source: 'a1',
             target: 'a6',
             type: EMPTY_EDGE_TYPE,
         },
         {
-            handleText: '24',
             source: 'a1',
             target: 'a7',
             type: EMPTY_EDGE_TYPE,

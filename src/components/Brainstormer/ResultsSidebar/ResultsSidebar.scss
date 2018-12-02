@@ -1,12 +1,13 @@
-.ResultsSection{
+.results.side-bar {
     background-color: #eee;
-
     overflow: auto;
-}
-
-
-.card.selected{
-    .card-header{
-        background-color: rgb(92,218,46);
-}
+    .card.selected {
+        &>.card-header {
+            background-color: rgb(92, 218, 46);
+        }
+    }
+    .results-section-body {
+        max-height: 83vh;
+        overflow-y: auto;
+    }
 }

@@ -5,21 +5,21 @@ import { ResultsSection } from './ResultsSection';
 
 interface ResultsSidebarProps {
     searchResults: SearchResults | null;
+    imageResults: SearchResults | null;
 }
-export default function ResultsSidebar({ searchResults }: ResultsSidebarProps) {
+export default function ResultsSidebar({ searchResults, imageResults }: ResultsSidebarProps) {
     const state = React.useState(0);
-    let results =
-        searchResults ||
-        `
-Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
-Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,`;
 
     return (
-        <section className="side-bar ResultsSection">
-            <ResultsSection id={0} header="Web results" state={state} results={results} />
-            <ResultsSection id={1} header="Image results" state={state} />
-            <ResultsSection id={2} header="Item Three" state={state} />
-            <ResultsSection id={3} header="Item Four" state={state} />
+        <section className="results side-bar">
+            <ResultsSection
+                id={0}
+                header="Image results"
+                state={state}
+                isImage
+                results={imageResults}
+            />
+            <ResultsSection id={1} header="Web results" state={state} results={searchResults} />
         </section>
     );
 }
