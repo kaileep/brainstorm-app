@@ -12,10 +12,14 @@ export interface SearchResults {
 }
 
 const GoogleFetcher = {
-    Search(query: string) {
+    Search(query: string): Promise<SearchResults> {
         return fetch(
             `https://www.googleapis.com/customsearch/v1?q=${query}&key=${apiKey}&cx=${customSearchApiId}`
-        ).then(r => r.json());
+        ).then(r => {
+            const res = r.json();
+            console.log(res);
+            return res;
+        });
     },
 };
 

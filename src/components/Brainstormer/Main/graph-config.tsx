@@ -106,27 +106,27 @@ export default {
     emptyNode: {
       shape: EmptyNodeShape,
       shapeId: '#emptyNode',
-      typeText: 'None'
+      typeText: 'Idea'
     },
     empty: {
       shape: CustomEmptyShape,
       shapeId: '#empty',
-      typeText: 'None'
+      typeText: 'Idea'
     },
     special: {
       shape: SpecialShape,
       shapeId: '#special',
-      typeText: 'Special'
+      typeText: 'Idea'
     },
     skinny: {
       shape: SkinnyShape,
       shapeId: '#skinny',
-      typeText: 'Skinny'
+      typeText: 'Idea'
     },
     poly: {
       shape: PolyShape,
       shapeId: "#poly",
-      typeText: 'Poly'
+      typeText: 'Idea'
     }
   }
 };

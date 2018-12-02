@@ -21,9 +21,8 @@
 
 import * as React from 'react';
 
-import { GraphView } from 'react-digraph';
+import { GraphView, INode, IEdge } from 'react-digraph';
 import sample from './defaultGraphState';
-import  { IGraph, INode, IEdge } from './';
 
 type LayoutEngineType = any;
 import GraphConfig, {
@@ -39,6 +38,7 @@ import GraphConfig, {
     SKINNY_TYPE,
 } from './graph-config'; // Configures node/edge types
 import { Sidebar } from '../Sidebar';
+import { IGraph } from './';
 
 function generateSample(totalNodes: number) {
     const generatedSample: IGraph = {
@@ -337,10 +337,6 @@ class Graph extends React.Component<IGraphProps, IGraphState> {
         this.setState({ layoutEngineType: event.target.value as LayoutEngineType | 'None' });
     };
 
-    /*
-     * Render
-     */
-
     render() {
         const { nodes, edges } = this.state.graph;
         const selected = this.state.selected;
@@ -350,14 +346,6 @@ class Graph extends React.Component<IGraphProps, IGraphState> {
             <>
                 <Sidebar onCustomIdeaClick={this.addStartNode} onAutoClick={this.addRandomNode} />
                 <section id="graph">
-                    {/* <div className="graph-header">
-                   <input
-                       className="total-nodes"
-                       type="number"
-                       onBlur={this.handleChange}
-                       placeholder={this.state.totalNodes.toString()}
-                   />
-               </div> */}
                     <GraphView
                         ref={this.GraphView}
                         nodeKey={NODE_KEY}
