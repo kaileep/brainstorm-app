@@ -18,9 +18,18 @@ const getSearchUri = (query: string) => {
 };
 
 async function makeRequest(url: string) {
-    const r = await fetch(url);
-    const res = await r.json();
-    return res;
+    try {
+        const r = await fetch(url);
+        if (!r.ok) {
+            console.warn('Something went wrong fetching search results.');
+            return null;
+        }
+        const res = await r.json();
+        return res;
+    } catch (e) {
+        console.error('Error fetching search results', e);
+        return null;
+    }
 }
 
 export function imageSearch(query: string): Promise<SearchResults> {
