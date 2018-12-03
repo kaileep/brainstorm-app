@@ -2,6 +2,7 @@
     background-color: #eee;
     .card {
         &.selected {
+            height: 80%;
             &>.card-header {
                 //background-color: rgb(92, 218, 46);
                 background-color: #ff7f17;
