@@ -233,7 +233,7 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
         return (
             <>
-                <Sidebar onCustomIdeaClick={this.addStartNode} onAutoClick={this.addRandomNode} />
+                <Sidebar onCustomIdeaClick={this.addStartNode} onAutoClick={this.addRandomNode} onConnectionClick={() => this.onCreateEdge(nodes[nodes.length-1], nodes[0])}/>
                 <section id="graph">
                     <GraphView
                         nodeKey={NODE_KEY}
