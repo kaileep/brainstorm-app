@@ -1,11 +1,23 @@
 import { SPECIAL_EDGE_TYPE, EMPTY_EDGE_TYPE, SPECIAL_TYPE, SPECIAL_CHILD_SUBTYPE, EMPTY_TYPE, SKINNY_TYPE, POLY_TYPE } from "./graph-config";
-import { INode, IEdge } from "react-digraph";
 
 export type IGraph = {
     nodes: INode[];
     edges: IEdge[];
 };
-
+export type IEdge = {
+    handleText?: string;
+    source: string;
+    target: string;
+    type: string;
+};
+export interface INode {
+    id: any;
+    title: string;
+    type: string | null;
+    subtype?: string;
+    x?: number;
+    y?: number;
+}
 
 // NOTE: Edges must have 'source' & 'target' attributes
 // In a more realistic use case, the graph would probably originate
@@ -13,46 +25,55 @@ export type IGraph = {
 const sample: IGraph = {
     edges: [
         {
+            handleText: '5',
             source: 'start1',
             target: 'a1',
             type: SPECIAL_EDGE_TYPE,
         },
         {
+            handleText: '5',
             source: 'a1',
             target: 'a2',
             type: SPECIAL_EDGE_TYPE,
         },
         {
+            handleText: '54',
             source: 'a2',
             target: 'a4',
             type: EMPTY_EDGE_TYPE,
         },
         {
+            handleText: '54',
             source: 'a1',
             target: 'a3',
             type: EMPTY_EDGE_TYPE,
         },
         {
+            handleText: '54',
             source: 'a3',
             target: 'a4',
             type: EMPTY_EDGE_TYPE,
         },
         {
+            handleText: '54',
             source: 'a1',
             target: 'a5',
             type: EMPTY_EDGE_TYPE,
         },
         {
+            handleText: '54',
             source: 'a4',
             target: 'a1',
             type: EMPTY_EDGE_TYPE,
         },
         {
+            handleText: '54',
             source: 'a1',
             target: 'a6',
             type: EMPTY_EDGE_TYPE,
         },
         {
+            handleText: '24',
             source: 'a1',
             target: 'a7',
             type: EMPTY_EDGE_TYPE,
@@ -61,12 +82,12 @@ const sample: IGraph = {
     nodes: [
         {
             id: 'start1',
-            title: 'Eggs',
+            title: 'Start (0)',
             type: SPECIAL_TYPE,
         },
         {
             id: 'a1',
-            title: 'Eggs Benedict',
+            title: 'Idea 1',
             type: SPECIAL_TYPE,
             x: 258.3976135253906,
             y: 331.9783248901367,
@@ -74,41 +95,42 @@ const sample: IGraph = {
         {
             id: 'a2',
             subtype: SPECIAL_CHILD_SUBTYPE,
-            title: 'Egg soup',
+            title: 'Idea 2',
             type: EMPTY_TYPE,
             x: 593.9393920898438,
             y: 260.6060791015625,
         },
         {
             id: 'a3',
-            title: 'Quail eggs',
+            title: 'Node C (3)',
             type: EMPTY_TYPE,
             x: 237.5757598876953,
             y: 61.81818389892578,
         },
         {
             id: 'a4',
-            title: 'Jumbo eggs',
+            title: 'Node D (4)',
             type: EMPTY_TYPE,
             x: 600.5757598876953,
             y: 600.81818389892578,
         },
         {
             id: 'a5',
-            title: 'Over-easy eggs',
+            title: 'Node E (5)',
+            type: null,
             x: 50.5757598876953,
             y: 500.81818389892578,
         },
         {
             id: 'a6',
-            title: 'Cheese Ommelete',
+            title: 'Node E (6)',
             type: SKINNY_TYPE,
             x: 300,
             y: 600,
         },
         {
             id: 'a7',
-            title: 'Quiche',
+            title: 'Node F (7)',
             type: POLY_TYPE,
             x: 0,
             y: 300,

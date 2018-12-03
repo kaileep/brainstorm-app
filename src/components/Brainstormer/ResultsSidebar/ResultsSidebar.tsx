@@ -1,27 +1,45 @@
 import * as React from 'react';
 import './ResultsSidebar.scss';
-import { SearchResults } from '../GoogleFetcher';
-import { ResultsSection } from './ResultsSection';
+import { Collapse, Card, CardHeader } from 'reactstrap';
+import CardBody from 'reactstrap/lib/CardBody';
 
-interface ResultsSidebarProps {
-    searchResults: SearchResults | null;
-    imageResults: SearchResults | null;
+function ResultsSection(props: ResultsSectionProps) {
+    const { state, id, header } = props;
+
+    const [selected, selectSection] = state;
+
+    const isSelected = selected === id;
+    return (
+        <Card className={isSelected ? 'selected' : ''}>
+            <CardHeader onClick={() => selectSection(id)} style={{ cursor: 'pointer' }}>
+                {header}
+            </CardHeader>
+            <Collapse isOpen={isSelected}>
+                <CardBody>
+                    Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
+                    Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum,
+                </CardBody>
+            </Collapse>
+        </Card>
+    );
 }
-export default function ResultsSidebar({ searchResults, imageResults }: ResultsSidebarProps) {
+
+interface ResultsSectionProps {
+    header: string;
+    results?: any;
+
+    state: [number, React.Dispatch<React.SetStateAction<number>>];
+    id: number;
+}
+export default function ResultsSidebar() {
     const state = React.useState(0);
 
     return (
-        <section className="results side-bar">
-            <ResultsSection
-                id={0}
-                header="Image results"
-                state={state}
-                isImage
-                results={imageResults}
-            />
-            <ResultsSection id={1} header="Web results" state={state} results={searchResults} />
-            <ResultsSection id={2} header="Video results" state={state} results={searchResults} />
-            <ResultsSection id={3} header="News results" state={state} results={searchResults} />
+        <section className="side-bar ResultsSection">
+            <ResultsSection id={0} header="Web results" state={state} />
+            <ResultsSection id={1} header="Image results" state={state} />
+            <ResultsSection id={2} header="Item Three" state={state} />
+            <ResultsSection id={3} header="Item Four" state={state} />
         </section>
     );
 }

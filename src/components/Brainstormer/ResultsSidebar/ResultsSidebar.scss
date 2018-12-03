@@ -1,14 +1,20 @@
-.results.side-bar {
+.ResultsSection{
     background-color: #eee;
-    overflow: auto;
-    .card.selected {
-        &>.card-header {
-            background-color: #1e90ff46;
-        }
-        height: 80%;
-    }
-    .results-section-body {
-        max-height: 83vh;
-        overflow-y: auto;
-    }
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.card.selected{
+    .card-header{
+        background-color: rgb(255,127,23);
+}
+flex: 1;
+}
+
+.card-header{
+    background-color: #1e90ff46;
 }
