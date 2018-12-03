@@ -3,8 +3,9 @@
     overflow: auto;
     .card.selected {
         &>.card-header {
-            background-color: rgb(92, 218, 46);
+            background-color: #1e90ff46;
         }
+        height: 80%;
     }
     .results-section-body {
         max-height: 83vh;
