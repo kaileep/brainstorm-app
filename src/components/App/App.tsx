@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
-import { Nav, Navbar, NavbarBrand } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledDropdown } from 'reactstrap';
 
 import './App.scss';
 import Brainstormer from '../Brainstormer';
@@ -15,13 +15,25 @@ class App extends React.Component {
                             <NavbarBrand tag={Link} to="/">
                                 Brainstormer
                             </NavbarBrand>
-                            {/* <Nav>
-                                <NavItem>
+                             <Nav>
+                                 <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle>
+                                        File
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem>Open</DropdownItem>
+                                        <DropdownItem>Rename</DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>Share With</DropdownItem>
+                                    </DropdownMenu>
+                                 </UncontrolledDropdown>
+
+                                {/*<NavItem>
                                     <NavLink tag={Link} to="/main">
                                         Start
                                     </NavLink>
-                                </NavItem>
-                            </Nav> */}
+                                </NavItem>*/}
+                            </Nav>
                         </Navbar>
                         <main>
                             <Switch>
