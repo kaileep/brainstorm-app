@@ -1,11 +1,21 @@
 import * as React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import * as googleFetcher from './GoogleFetcher';
+import * as _ from 'lodash';
+
+import { GraphView, INode, IEdge } from 'react-digraph';
+import graphState from './defaultGraphState';
+
+import GraphConfig, {
+    EMPTY_EDGE_TYPE,
+    EMPTY_TYPE,
+    NODE_KEY,
+    SPECIAL_EDGE_TYPE,
+    SPECIAL_TYPE,
+} from './graph-config'; // Configures node/edge types
 import { Sidebar } from './Sidebar';
-import Main from './Main/Main';
-import { ResultsSidebar } from './ResultsSidebar';
+
 import './Brainstormer.scss';
-import Canvas from './Main/Canvas';
-import Graph from './Main/Graph';
+import { ResultsSidebar } from './ResultsSidebar';
 
 type GraphProps = {
     onSelected(selected: INode | null): any;
@@ -97,8 +107,6 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
         graph.nodes[i] = viewNode;
         this.setState({ graph });
-
-        this.handleGoogleSearch(viewNode);
     };
 
     onSelectNode = (viewNode: INode | null) => {
@@ -131,7 +139,6 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
         graph.nodes = [...graph.nodes, viewNode];
         this.setState({ graph });
-        this.handleGoogleSearch(viewNode);
     };
 
     // Deletes a node from the graph
@@ -200,8 +207,9 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
     //#endregion
 
-    public componentDidMount() {
-        this.handleGoogleSearch(this.state.graph.nodes[0]);
+
+    public componentDidMount(){
+        this.handleGoogleSearch(this.state.graph.nodes[0])
     }
 
     private handleGoogleSearch(viewNode: INode | null) {
@@ -226,9 +234,33 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
         return (
             <>
-                <Graph />
-                <ResultsSidebar />
+                <Sidebar onCustomIdeaClick={this.addStartNode} onAutoClick={this.addRandomNode} />
+                <section id="graph">
+                    <GraphView
+                        nodeKey={NODE_KEY}
+                        nodes={nodes}
+                        edges={edges}
+                        selected={selected}
+                        nodeTypes={NodeTypes}
+                        nodeSubtypes={NodeSubtypes}
+                        edgeTypes={EdgeTypes}
+                        onSelectNode={this.onSelectNode}
+                        onCreateNode={this.onCreateNode}
+                        onUpdateNode={this.onUpdateNode}
+                        onDeleteNode={this.onDeleteNode}
+                        onSelectEdge={this.onSelectEdge}
+                        onCreateEdge={this.onCreateEdge}
+                        onSwapEdge={this.onSwapEdge}
+                        onDeleteEdge={this.onDeleteEdge}
+                    />
+                </section>
+                <ResultsSidebar
+                    searchResults={this.state.searchResults}
+                    imageResults={this.state.imageResults}
+                />
             </>
         );
     }
 }
+
+export default Graph;
