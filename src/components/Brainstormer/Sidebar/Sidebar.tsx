@@ -17,7 +17,7 @@ export default function Sidebar(props: SidebarProps) {
                         <Label for="exampleFile" alignment="center">
                             Upload Project File
                         </Label>
-                        <Input type="file" name="file" id="exampleFile" />
+                        <Input type="file" name="file" id="exampleFile" accept=".bst"/>
                         <FormText color="muted">
                             Already got a brainstorm going? Upload it here to continue working!
                         </FormText>
