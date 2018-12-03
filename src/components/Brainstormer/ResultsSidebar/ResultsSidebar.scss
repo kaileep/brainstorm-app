@@ -1,10 +1,20 @@
 .ResultsSection{
     background-color: #eee;
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
 .card.selected{
     .card-header{
-        background-color: rgb(92,218,46);
+        background-color: rgb(255,127,23);
 }
+flex: 1;
+}
+
+.card-header{
+    background-color: #1e90ff46;
 }
