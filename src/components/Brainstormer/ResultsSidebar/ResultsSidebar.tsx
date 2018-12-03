@@ -20,6 +20,8 @@ export default function ResultsSidebar({ searchResults, imageResults }: ResultsS
                 results={imageResults}
             />
             <ResultsSection id={1} header="Web results" state={state} results={searchResults} />
+            <ResultsSection id={2} header="Video results" state={state} results={searchResults} />
+            <ResultsSection id={3} header="News results" state={state} results={searchResults} />
         </section>
     );
 }
