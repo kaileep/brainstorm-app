@@ -207,9 +207,8 @@ class Graph extends React.Component<GraphProps, GraphState> {
 
     //#endregion
 
-
-    public componentDidMount(){
-        this.handleGoogleSearch(this.state.graph.nodes[0])
+    public componentDidMount() {
+        this.handleGoogleSearch(this.state.graph.nodes[0]);
     }
 
     private handleGoogleSearch(viewNode: INode | null) {
