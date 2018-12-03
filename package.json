@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/lodash": "^4.14.118",
     "classnames": "^2.2.6",
     "react": "^16.7.0-alpha",
     "react-digraph": "^5.3.7",
