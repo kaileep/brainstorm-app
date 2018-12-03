@@ -67,7 +67,7 @@ class App extends React.Component {
                                     <DropdownToggle nav caret>
                                         Help
                                     </DropdownToggle>
-                                    <DropdownMenu>
+                                    <DropdownMenu right>
                                         <DropdownItem>Learn the Basics</DropdownItem>
                                         <DropdownItem>Help Center</DropdownItem>
                                         <DropdownItem>Knowledge Base</DropdownItem>
