@@ -3,7 +3,6 @@ import SidebarButton from './Buttons/SidebarButton';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import './Sidebar.scss';
 import { FormGroup, Label, Input, FormText, Form } from 'reactstrap';
-import {INode} from 'react-digraph'
 
 export default function Sidebar(props: SidebarProps) {
     return (
