@@ -17,7 +17,7 @@ class App extends React.Component {
                             </NavbarBrand>
                              <Nav>
                                 <UncontrolledDropdown nav inNavbar>
-                                    <DropdownToggle>
+                                    <DropdownToggle nav caret>
                                         File
                                     </DropdownToggle>
                                     <DropdownMenu>
@@ -32,8 +32,8 @@ class App extends React.Component {
                                         <DropdownItem>Exit</DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
-                                <UncontrolledDropdown>
-                                    <DropdownToggle>
+                                <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle nav caret>
                                         Edit
                                     </DropdownToggle>
                                     <DropdownMenu>
@@ -47,8 +47,8 @@ class App extends React.Component {
                                         <DropdownItem>Crop Image</DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
-                                <UncontrolledDropdown>
-                                    <DropdownToggle>
+                                <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle nav caret>
                                         View
                                     </DropdownToggle>
                                     <DropdownMenu>
@@ -63,8 +63,8 @@ class App extends React.Component {
                                         <DropdownItem>Shows Rulers</DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
-                                <UncontrolledDropdown>
-                                    <DropdownToggle>
+                                <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle nav caret>
                                         Help
                                     </DropdownToggle>
                                     <DropdownMenu>
@@ -75,13 +75,7 @@ class App extends React.Component {
                                         <DropdownItem>Report a Bug</DropdownItem>
                                         <DropdownItem>What's New?</DropdownItem>
                                     </DropdownMenu>
-                                 </UncontrolledDropdown>
-
-                                {/*<NavItem>
-                                    <NavLink tag={Link} to="/main">
-                                        Start
-                                    </NavLink>
-                                </NavItem>*/}
+                                </UncontrolledDropdown>
                             </Nav>
                         </Navbar>
                         <main>
